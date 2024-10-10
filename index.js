@@ -18,6 +18,7 @@ const getCountryName = (code) => {
   return new Intl.DisplayNames([code], { type: "region" }).of(code);
 };
 
+
 // to get the date and time
 const getDateTime = (dt) => {
   const curDate = new Date(dt * 1000); // Convert seconds to milliseconds
@@ -44,6 +45,7 @@ citySearch.addEventListener("submit", (e) => {
   e.preventDefault();
 
   let cityName = document.querySelector(".city_name");
+  
   console.log(cityName.value);
   city = cityName.value;
 
@@ -53,31 +55,36 @@ citySearch.addEventListener("submit", (e) => {
 });
 
 const getWeatherData = async () => {
-  const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=92919f71c5f1c373ae15f8dcef36a8bc&units=metric`;
-  try {
+  const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=92919f71c5f1c373ae15f8dcef36a8bc`;
+
+  
     const res = await fetch(weatherUrl);
-    const data = await res.json();
-    //console.log(data);
-
-    const { main, name, weather, wind, sys, dt } = data;
-
-    cityName.innerHTML = `${name}, ${getCountryName(sys.country)}`;
-    dateTime.innerHTML = getDateTime(dt);
-
-    w_forecast.innerHTML = weather[0].main;
-    w_icon.innerHTML = `<img src="http://openweathermap.org/img/wn/${weather[0].icon}@4x.png" />`;
-
-    w_temperature.innerHTML = `${main.temp}&#176`;
-    w_minTem.innerHTML = `Min: ${main.temp_min.toFixed()}&#176`;
-    w_maxTem.innerHTML = `Max: ${main.temp_max.toFixed()}&#176`;
-
-    w_feelsLike.innerHTML = `${main.feels_like.toFixed(2)}&#176`;
-    w_humidity.innerHTML = `${main.humidity}%`;
-    w_wind.innerHTML = `${wind.speed} m/s`;
-    w_pressure.innerHTML = `${main.pressure} hPa`;
-  } catch (error) {
-    console.log(error);
-  }
-};
+    if(res.status==404){
+      document.querySelector(".error").style.display="block";
+     // document.querySelector(".weather_body").style.display="none";
+    }else{
+      document.querySelector(".error").style.display="none";
+      const data = await res.json();
+      //console.log(data);
+  
+      const { main, name, weather, wind, sys, dt } = data;
+  
+      cityName.innerHTML = `${name}, ${getCountryName(sys.country)}`;
+      dateTime.innerHTML = getDateTime(dt);
+  
+      w_forecast.innerHTML = weather[0].main;
+      w_icon.innerHTML = `<img src="http://openweathermap.org/img/wn/${weather[0].icon}@4x.png" />`;
+  
+      w_temperature.innerHTML = `${main.temp}&#176`;
+      w_minTem.innerHTML = `Min: ${main.temp_min.toFixed()}&#176`;
+      w_maxTem.innerHTML = `Max: ${main.temp_max.toFixed()}&#176`;
+  
+      w_feelsLike.innerHTML = `${main.feels_like.toFixed(2)}&#176`;
+      w_humidity.innerHTML = `${main.humidity}%`;
+      w_wind.innerHTML = `${wind.speed} m/s`;
+      w_pressure.innerHTML = `${main.pressure} hPa`;
+    } 
+    }
+    
 
 document.body.addEventListener("load", getWeatherData());
