@@ -19,6 +19,7 @@ const getCountryName = (code) => {
 };
 
 // to get the date and time
+
 const getDateTime = (dt) => {
   const curDate = new Date(dt * 1000); // Convert seconds to milliseconds
   console.log(curDate);
