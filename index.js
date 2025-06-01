@@ -43,8 +43,8 @@ function updateWeather(data) {
   weather.max.textContent = `Max: ${Math.round(main.temp_max)}°`;
   weather.feels.textContent = `${Math.round(main.feels_like)}°`;
   weather.humidity.textContent = `${main.humidity}%`;
-  weather.wind.textContent = `${wind.speed} m/s`;
-  weather.pressure.textContent = `${main.pressure} hPa`;
+  weather.wind.textContent = `${(wind.speed * 3.6).toFixed(1)} km/h`;
+  weather.pressure.textContent = `${main.pressure} mb`;
 }
 
 // Fetch weather
