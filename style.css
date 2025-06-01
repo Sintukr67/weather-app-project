@@ -8,20 +8,19 @@
 }
 
 body {
-  background: #1e1e1e;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
+  background: #1e1e1e;
 }
 
 .container {
-  background: #fff;
-  padding: 2rem;
   width: 90%;
   max-width: 500px;
+  background: #fff;
+  padding: 2rem;
   border-radius: 15px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px #0003;
 }
 
 .weather_header {
@@ -37,12 +36,12 @@ body {
 
 .weather_search input {
   width: 100%;
-  padding: 0.8rem 2.5rem;
+  padding: .8rem 2.5rem;
   border: none;
   border-radius: 8px;
   background: #f0f0f0;
   color: #333;
-  font-size: 0.9rem;
+  font-size: .9rem;
 }
 
 .weather_search input:focus {
@@ -58,13 +57,13 @@ body {
 }
 
 .refresh-btn {
+  padding: .8rem;
+  border: none;
+  border-radius: 8px;
   background: #1e1e1e;
   color: #fff;
-  border: none;
-  padding: 0.8rem;
-  border-radius: 8px;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: .3s;
 }
 
 .refresh-btn:hover {
@@ -73,10 +72,10 @@ body {
 }
 
 .error {
-  color: #ff4444;
-  text-align: center;
-  margin-bottom: 1rem;
   display: none;
+  text-align: center;
+  color: #f44;
+  margin-bottom: 1rem;
 }
 
 .weather_body {
@@ -85,18 +84,18 @@ body {
 
 .weather_city {
   font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: .5rem;
 }
 
 .weather_date_time {
   color: #666;
-  font-size: 0.9rem;
+  font-size: .9rem;
   margin-bottom: 2rem;
 }
 
 .weather_forecast {
   display: inline-block;
-  padding: 0.5rem 1.5rem;
+  padding: .5rem 1.5rem;
   background: #1e1e1e;
   color: #fff;
   border-radius: 20px;
@@ -131,8 +130,8 @@ body {
 .weather_card {
   display: flex;
   align-items: center;
-  background: #f0f0f0;
   padding: 1rem;
+  background: #f0f0f0;
   border-radius: 10px;
 }
 
@@ -144,7 +143,7 @@ body {
 
 .weather_card p:first-child {
   color: #666;
-  font-size: 0.9rem;
+  font-size: .9rem;
 }
 
 .suggestions {
@@ -152,17 +151,17 @@ body {
   top: 100%;
   left: 0;
   right: 0;
+  margin-top: .5rem;
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  margin-top: 0.5rem;
+  box-shadow: 0 5px 15px #0001;
   max-height: 200px;
   overflow-y: auto;
   display: none;
 }
 
 .suggestion-item {
-  padding: 0.8rem 1rem;
+  padding: .8rem 1rem;
   cursor: pointer;
 }
 
@@ -175,7 +174,7 @@ body {
     width: 95%;
     padding: 1.5rem;
   }
-
+  
   .weather_info {
     grid-template-columns: 1fr;
   }
